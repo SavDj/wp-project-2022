@@ -19,14 +19,16 @@ import model.User;
 public class UserDAO {
 	
 	private Map<String, User> users = new HashMap<>();
+	private String contextPath;
 	
 	public UserDAO() {}
 
 	public UserDAO(String contextPath) {
-		loadUsers(contextPath);
+		this.contextPath = contextPath;
+		loadUsers();
 	}
 	
-	public User find(String username, String password) {
+	public User getUserByUsernameAndPassword(String username, String password) {
 		if (!users.containsKey(username)) {
 			return null;
 		}
@@ -37,11 +39,16 @@ public class UserDAO {
 		return user;
 	}
 	
-	public Collection<User> findAll() {
+	public Collection<User> getAllUsers() {
 		return users.values();
 	}
 	
-	public void saveUsers(String contextPath) {
+	public void addUser(User user) {
+		users.put(user.getUsername(), user);
+		saveUsers();
+	}
+	
+	public void saveUsers() {
 		FileWriter fw = null;
 		try {
 			File file = new File(contextPath + "/users.txt");
@@ -65,7 +72,7 @@ public class UserDAO {
 		
 
 	
-	public void loadUsers(String contextPath) {
+	public void loadUsers() {
 		BufferedReader in = null;
 		FileWriter fw = null;
 		try {
@@ -106,5 +113,5 @@ public class UserDAO {
 				}
 			}
 		}
-	}
+}
 

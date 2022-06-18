@@ -11,4 +11,9 @@ public enum SportsFacilityType {
     private SportsFacilityType(String label) {
         this.label = label;
     }
+    
+    @Override
+    public String toString() {
+        return label;
+    }
 }
