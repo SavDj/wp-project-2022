@@ -48,6 +48,10 @@ public class UserDAO {
 		saveUsers();
 	}
 	
+	public boolean userExists(User user) {
+		return users.containsValue(user);
+	}
+	
 	public void saveUsers() {
 		FileWriter fw = null;
 		try {
