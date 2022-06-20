@@ -57,5 +57,13 @@ public class UserService {
 		request.getSession().setAttribute("user", loggedUser);
 		return Response.status(200).build();
 	}
+	
+	@POST
+	@Path("/logout")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void logout(@Context HttpServletRequest request) {
+		request.getSession().invalidate();
+	}
 
 }

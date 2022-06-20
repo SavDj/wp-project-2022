@@ -21,8 +21,7 @@ public class User {
 	
 	public User() {}
 	
-	public User(String username, String password, String firstName, String lastName, Gender gender, Date dateOfBirth,
-			Role role) {
+	public User(String username, String password, String firstName, String lastName, Gender gender, Date dateOfBirth) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -30,7 +29,6 @@ public class User {
 		this.lastName = lastName;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
-		this.role = role;
 	}
 	public String getUsername() {
 		return username;
