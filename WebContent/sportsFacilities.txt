@@ -1,0 +1,1 @@
+{ name:"Objekat1", type:1, description:"text", status:true, location:{ longitude:1, latitude:1, address:"address" }, logo:"", averageRating:4, workingHours:"8:00-16:00" }

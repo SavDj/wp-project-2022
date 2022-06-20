@@ -1,4 +1,4 @@
-package service;
+package services;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;

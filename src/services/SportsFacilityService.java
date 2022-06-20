@@ -1,4 +1,4 @@
-package service;
+package services;
 
 import java.util.Collection;
 
@@ -50,17 +50,18 @@ public class SportsFacilityService {
 	@POST
 	@Path("/search")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<SportsFacility> search(String searchString, String searchType) {
+	public Collection<SportsFacility> search(String searchString) {
 		SportsFacilityDAO dao = (SportsFacilityDAO) ctx.getAttribute("sportsFacilityDao");
-		switch(searchType) {
+		String[] splitStrings = searchString.split(":");
+		switch(splitStrings[0]) {
 			case "name":
-				return dao.searchByName(searchString);
+				return dao.searchByName(splitStrings[0]);
 			case "type":
-				return dao.searchByType(searchString);
+				return dao.searchByType(splitStrings[0]);
 			case "location":
-				return dao.searchByLocation(searchString);
+				return dao.searchByLocation(splitStrings[0]);
 			case "rating":
-				return dao.searchByRating(searchString);
+				return dao.searchByRating(splitStrings[0]);
 			default:
 				return null;
 		}
